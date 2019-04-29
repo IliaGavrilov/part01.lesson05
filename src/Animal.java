@@ -1,4 +1,4 @@
-public class Animal extends AnimalCollection{
+public class Animal{
     public int id;
     public String animalName;
     public Object owner;

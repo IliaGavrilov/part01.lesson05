@@ -1,31 +1,27 @@
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class AnimalCollection {
-    //private Set<Object> animalCollection = new HashSet<>();
-    public Set<Object> animalCollection = new HashSet<>();
+    public Set<Animal> animalCollection = new HashSet<>();
 
-    void addAnimal(Object givenAnimal){
+    /* Метод добавления животного в общий список  */
+    void addAnimal(Animal givenAnimal){
         if (equals(givenAnimal)){
             System.out.println("Объект: " + givenAnimal.toString() + " уже в списке!");
         }
         animalCollection.add(givenAnimal);
     }
 
-    public Object animalSearch(String nameToSearch){
+    /* Поиск животного по его кличке */
+    public void animalSearch(String nameToSearch){
         Iterator itr = animalCollection.iterator();
         while (itr.hasNext()) {
-            //itr.next().animalName();
-            Object x = itr.next();
-            //String x = itr.next().toString();
-            if (x.getAnimalName().equals(nameToSearch)) { //Почему нет доступа к name объекта из HashSet класса Animal?
-                System.out.println("Животное найдено: ");
+            Animal x = (Animal)itr.next();
+            //System.out.println("Имя животного: "+x.getAnimalName());
+            if (x.getAnimalName() == nameToSearch) {
+                System.out.println("Животное найдено: " + x.toString());
             }
-            return null;
+            x = null;
         }
-        return null;
     }
 
     /* Переписанный метод equals() для выявления добавляемых дубликатов
