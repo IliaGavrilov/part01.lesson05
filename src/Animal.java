@@ -15,10 +15,33 @@ public class Animal{
         return animalName;
     }
 
-//    @Override
-//    public String toString() {
-//        return animalName;
-//    }
+    public int getId() {
+        return id;
+    }
+
+    public Object getOwner() {
+        return owner;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setAnimalName(String animalName) {
+        this.animalName = animalName;
+    }
+
+    public void setOwner(Object owner) {
+        this.owner = owner;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
 
     //@Override
     public String toString() {
