@@ -1,16 +1,20 @@
 public class Animal{
+
+    /* Поля класса Animal */
     public int id;
     public String animalName;
-    public Object owner;
+    public Person owner;
     public double weight;
 
-    public Animal(int givenId, String givenName, Object givenOwner, double givenWeight){
+    /* Конструктор класса Animal */
+    public Animal(int givenId, String givenName, Person givenOwner, double givenWeight){
         this.id = givenId;
         this.animalName = givenName;
         this.owner = givenOwner;
         this.weight = givenWeight;
     }
 
+    /* Геттеры класса Animal */
     public String getAnimalName() {
         return animalName;
     }
@@ -19,7 +23,7 @@ public class Animal{
         return id;
     }
 
-    public Object getOwner() {
+    public Person getOwner() {
         return owner;
     }
 
@@ -27,6 +31,7 @@ public class Animal{
         return weight;
     }
 
+    /* Cеттеры класса Animal */
     public void setId(int id) {
         this.id = id;
     }
@@ -35,7 +40,7 @@ public class Animal{
         this.animalName = animalName;
     }
 
-    public void setOwner(Object owner) {
+    public void setOwner(Person owner) {
         this.owner = owner;
     }
 
@@ -43,7 +48,8 @@ public class Animal{
         this.weight = weight;
     }
 
-    //@Override
+    /* Переназначение метода toString() класса Animal */
+    @Override
     public String toString() {
         return "Animal{" +
                 "id=" + id +

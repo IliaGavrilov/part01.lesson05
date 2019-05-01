@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class AnimalCollection {
-    public Set<Animal> animalCollection = new HashSet<>();
+    public HashSet<Animal> animalCollection = new HashSet<>();
 
     /* Метод добавления животного в общий список */
     public void addAnimal(Animal givenAnimal){
@@ -63,6 +63,46 @@ public class AnimalCollection {
 
         animalCollection.remove(x);
         animalCollection.add(newAnimal);
+    }
+
+    public List<Animal> sortingCollection(){
+        List<Animal> newAnimalCollection = new ArrayList<Animal>(animalCollection);
+        return newAnimalCollection;
+    }
+
+    /* Метод пузырьковой сортировки по трем полям объектов в массиве */
+    public void bubbleSortAnimals(List<Animal> newAnimalCollection) {
+        for (int i = 0; i < newAnimalCollection.size(); i++) {
+            for (int j = 1; j < newAnimalCollection.size() - i; j++) {
+                char x = getOwnerName(newAnimalCollection.get(j-1).getOwner()).charAt(0);
+                char y = getOwnerName(newAnimalCollection.get(j).getOwner()).charAt(0);
+                if (x > y) {
+                    Animal temp = newAnimalCollection.get(j-1);
+                    newAnimalCollection.set(j-1, newAnimalCollection.get(j));
+                    newAnimalCollection.set(j, temp);
+                }
+                x = getOwnerName(newAnimalCollection.get(j-1).getOwner()).charAt(0);
+                y = getOwnerName(newAnimalCollection.get(j).getOwner()).charAt(0);
+                if (x == y && newAnimalCollection.get(j-1).getAnimalName().charAt(0) > newAnimalCollection.get(j).getAnimalName().charAt(0)) {
+                    Animal temp = newAnimalCollection.get(j-1);
+                    newAnimalCollection.set(j-1, newAnimalCollection.get(j));
+                    newAnimalCollection.set(j, temp);
+                }
+                x = getOwnerName(newAnimalCollection.get(j-1).getOwner()).charAt(0);
+                y = getOwnerName(newAnimalCollection.get(j).getOwner()).charAt(0);
+                if (x == y && newAnimalCollection.get(j-1).getAnimalName().charAt(0) == newAnimalCollection.get(j).getAnimalName().charAt(0)
+                && newAnimalCollection.get(j-1).getWeight() > newAnimalCollection.get(j).getWeight()) {
+                    Animal temp = newAnimalCollection.get(j-1);
+                    newAnimalCollection.set(j-1, newAnimalCollection.get(j));
+                    newAnimalCollection.set(j, temp);
+                }
+            }
+        }
+    }
+
+    /* Метод-помощник для возврата имени объекта Хозяин для метода сортировки bubbleSortAnimals()*/
+    public String getOwnerName(Person givenPerson) {
+        return givenPerson.getOwnerName();
     }
 
     /* Переписанный метод equals() для выявления добавляемых дубликатов
